@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="/home.css">
+</head>
+<body>
+<h1>로또 번호 생성기</h1>
+<div class="number-div" th:text="${lastNumbersList['1']}">0</div>
+<div class="number-div" th:text="${lastNumbersList['2']}">0</div>
+<div class="number-div" th:text="${lastNumbersList['3']}">0</div>
+<div class="number-div" th:text="${lastNumbersList['4']}">0</div>
+<div class="number-div" th:text="${lastNumbersList['5']}">0</div>
+<div class="number-div" th:text="${lastNumbersList['6']}">0</div>
+
+<button type="button" th:onclick="|location.href='@{/pull}'|">랜덤번호 뽑기</button>
+<button type="button" th:onclick="|location.href='@{/clear}'|">초기화</button>
+
+<table border="1">
+    <tr>
+        <th>숫자1</th>
+        <th>숫자2</th>
+        <th>숫자3</th>
+        <th>숫자4</th>
+        <th>숫자5</th>
+        <th>숫자6</th>
+    </tr>
+    <tr>
+        <td th:text="${getStore1['1']}">0</td>
+        <td th:text="${getStore1['2']}">0</td>
+        <td th:text="${getStore1['3']}">0</td>
+        <td th:text="${getStore1['4']}">0</td>
+        <td th:text="${getStore1['5']}">0</td>
+        <td th:text="${getStore1['6']}">0</td>
+    </tr>
+    <tr>
+        <td th:text="${getStore2['1']}">0</td>
+        <td th:text="${getStore2['2']}">0</td>
+        <td th:text="${getStore2['3']}">0</td>
+        <td th:text="${getStore2['4']}">0</td>
+        <td th:text="${getStore2['5']}">0</td>
+        <td th:text="${getStore2['6']}">0</td>
+    </tr>
+    <tr>
+        <td th:text="${getStore3['1']}">0</td>
+        <td th:text="${getStore3['2']}">0</td>
+        <td th:text="${getStore3['3']}">0</td>
+        <td th:text="${getStore3['4']}">0</td>
+        <td th:text="${getStore3['5']}">0</td>
+        <td th:text="${getStore3['6']}">0</td>
+    </tr>
+</table>
+</body>
+</html>

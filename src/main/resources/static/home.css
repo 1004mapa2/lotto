@@ -1,0 +1,8 @@
+.number-div {
+    display: inline-block;
+    width: 40px;
+}
+
+th, td {
+    text-align: center;
+}
