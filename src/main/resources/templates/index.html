@@ -6,50 +6,76 @@
     <link rel="stylesheet" href="/home.css">
 </head>
 <body>
-<h1>로또 번호 생성기</h1>
-<div class="number-div" th:text="${lastNumbersList['1']}">0</div>
-<div class="number-div" th:text="${lastNumbersList['2']}">0</div>
-<div class="number-div" th:text="${lastNumbersList['3']}">0</div>
-<div class="number-div" th:text="${lastNumbersList['4']}">0</div>
-<div class="number-div" th:text="${lastNumbersList['5']}">0</div>
-<div class="number-div" th:text="${lastNumbersList['6']}">0</div>
+<h1 class = "mainHeader">로또 번호 생성기</h1>
+<div class = "number-head-div">
+    <div class = "input-number-div" th:text="${lastNumbersList['1']}">
+        <div>0</div>
+    </div>
+    <div class = "input-number-div" th:text="${lastNumbersList['2']}">
+        <div>0</div>
+    </div>
+    <div class = "input-number-div" th:text="${lastNumbersList['3']}">
+        <div>0</div>
+    </div>
+    <div class = "random-number-div" th:text="${lastNumbersList['4']}">
+        <div>0</div>
+    </div>
+    <div class = "random-number-div" th:text="${lastNumbersList['5']}">
+        <div>0</div>
+    </div>
+    <div class = "random-number-div" th:text="${lastNumbersList['6']}">
+        <div>0</div>
+    </div>
+</div>
 
-<button type="button" th:onclick="|location.href='@{/pull}'|">랜덤번호 뽑기</button>
-<button type="button" th:onclick="|location.href='@{/clear}'|">초기화</button>
+<div class = "error">오류 메세지가 있을경우 여기에 표시</div>
 
-<table border="1">
-    <tr>
-        <th>숫자1</th>
-        <th>숫자2</th>
-        <th>숫자3</th>
-        <th>숫자4</th>
-        <th>숫자5</th>
-        <th>숫자6</th>
-    </tr>
-    <tr>
-        <td th:text="${getStore1['1']}">0</td>
-        <td th:text="${getStore1['2']}">0</td>
-        <td th:text="${getStore1['3']}">0</td>
-        <td th:text="${getStore1['4']}">0</td>
-        <td th:text="${getStore1['5']}">0</td>
-        <td th:text="${getStore1['6']}">0</td>
-    </tr>
-    <tr>
-        <td th:text="${getStore2['1']}">0</td>
-        <td th:text="${getStore2['2']}">0</td>
-        <td th:text="${getStore2['3']}">0</td>
-        <td th:text="${getStore2['4']}">0</td>
-        <td th:text="${getStore2['5']}">0</td>
-        <td th:text="${getStore2['6']}">0</td>
-    </tr>
-    <tr>
-        <td th:text="${getStore3['1']}">0</td>
-        <td th:text="${getStore3['2']}">0</td>
-        <td th:text="${getStore3['3']}">0</td>
-        <td th:text="${getStore3['4']}">0</td>
-        <td th:text="${getStore3['5']}">0</td>
-        <td th:text="${getStore3['6']}">0</td>
-    </tr>
-</table>
+<div class = "button-set">
+    <button class = "button-solo" type="button" th:onclick="|location.href='@{/pull}'|">뽑기</button>
+    <button class = "button-solo" type="button" th:onclick="|location.href='@{/list}'|">리스트</button>
+</div>
+
+<div class = "pull-number-text">최근 생성번호 5개</div>
+
+<div class = "row-set">
+    <div class = "number-set" th:text="${getStore1['1']}">0</div>
+    <div class = "number-set" th:text="${getStore1['2']}">0</div>
+    <div class = "number-set" th:text="${getStore1['3']}">0</div>
+    <div class = "number-set" th:text="${getStore1['4']}">0</div>
+    <div class = "number-set" th:text="${getStore1['5']}">0</div>
+    <div class = "number-set" th:text="${getStore1['6']}">0</div>
+</div>
+<div class = "row-set">
+    <div class = "number-set" th:text="${getStore2['1']}"></div>
+    <div class = "number-set" th:text="${getStore2['2']}"></div>
+    <div class = "number-set" th:text="${getStore2['3']}"></div>
+    <div class = "number-set" th:text="${getStore2['4']}"></div>
+    <div class = "number-set" th:text="${getStore2['5']}"></div>
+    <div class = "number-set" th:text="${getStore2['6']}"></div>
+</div>
+<div class = "row-set">
+    <div class = "number-set" th:text="${getStore3['1']}"></div>
+    <div class = "number-set" th:text="${getStore3['2']}"></div>
+    <div class = "number-set" th:text="${getStore3['3']}"></div>
+    <div class = "number-set" th:text="${getStore3['4']}"></div>
+    <div class = "number-set" th:text="${getStore3['5']}"></div>
+    <div class = "number-set" th:text="${getStore3['6']}"></div>
+</div>
+<div class = "row-set">
+    <div class = "number-set" th:text="${getStore4['1']}"></div>
+    <div class = "number-set" th:text="${getStore4['2']}"></div>
+    <div class = "number-set" th:text="${getStore4['3']}"></div>
+    <div class = "number-set" th:text="${getStore4['4']}"></div>
+    <div class = "number-set" th:text="${getStore4['5']}"></div>
+    <div class = "number-set" th:text="${getStore4['6']}"></div>
+</div>
+<div class = "row-set">
+    <div class = "number-set" th:text="${getStore5['1']}"></div>
+    <div class = "number-set" th:text="${getStore5['2']}"></div>
+    <div class = "number-set" th:text="${getStore5['3']}"></div>
+    <div class = "number-set" th:text="${getStore5['4']}"></div>
+    <div class = "number-set" th:text="${getStore5['5']}"></div>
+    <div class = "number-set" th:text="${getStore5['6']}"></div>
+</div>
 </body>
 </html>
