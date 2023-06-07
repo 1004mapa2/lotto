@@ -8,7 +8,7 @@
 <body>
 <h1 class="mainHeader">로또 번호 생성기</h1>
 <div>
-    <form action="/pull" th:object="${number123}" method="post">
+    <form action="/pull" th:object="${inputNumber}" method="post">
         <div class="number-head-div">
             <input type="text" th:field="*{number1}" class="input-number-div">
             <input type="text" th:field="*{number2}" class="input-number-div">
@@ -30,45 +30,21 @@
 
 <div class="pull-number-text">최근 생성번호 5개</div>
 
-<div class="row-set">
-    <div class="number-set" th:text="${getStore1['1']}"></div>
-    <div class="number-set" th:text="${getStore1['2']}"></div>
-    <div class="number-set" th:text="${getStore1['3']}"></div>
-    <div class="number-set" th:text="${getStore1['4']}"></div>
-    <div class="number-set" th:text="${getStore1['5']}"></div>
-    <div class="number-set" th:text="${getStore1['6']}"></div>
+<div th:if="${lastFive.size()} == 0">
+    <div>숫자를 생성해주세요</div>
 </div>
-<div class="row-set">
-    <div class="number-set" th:text="${getStore2['1']}"></div>
-    <div class="number-set" th:text="${getStore2['2']}"></div>
-    <div class="number-set" th:text="${getStore2['3']}"></div>
-    <div class="number-set" th:text="${getStore2['4']}"></div>
-    <div class="number-set" th:text="${getStore2['5']}"></div>
-    <div class="number-set" th:text="${getStore2['6']}"></div>
-</div>
-<div class="row-set">
-    <div class="number-set" th:text="${getStore3['1']}"></div>
-    <div class="number-set" th:text="${getStore3['2']}"></div>
-    <div class="number-set" th:text="${getStore3['3']}"></div>
-    <div class="number-set" th:text="${getStore3['4']}"></div>
-    <div class="number-set" th:text="${getStore3['5']}"></div>
-    <div class="number-set" th:text="${getStore3['6']}"></div>
-</div>
-<div class="row-set">
-    <div class="number-set" th:text="${getStore4['1']}"></div>
-    <div class="number-set" th:text="${getStore4['2']}"></div>
-    <div class="number-set" th:text="${getStore4['3']}"></div>
-    <div class="number-set" th:text="${getStore4['4']}"></div>
-    <div class="number-set" th:text="${getStore4['5']}"></div>
-    <div class="number-set" th:text="${getStore4['6']}"></div>
-</div>
-<div class="row-set">
-    <div class="number-set" th:text="${getStore5['1']}"></div>
-    <div class="number-set" th:text="${getStore5['2']}"></div>
-    <div class="number-set" th:text="${getStore5['3']}"></div>
-    <div class="number-set" th:text="${getStore5['4']}"></div>
-    <div class="number-set" th:text="${getStore5['5']}"></div>
-    <div class="number-set" th:text="${getStore5['6']}"></div>
+
+<div th:if="${lastFive.size()} != 0">
+    <div th:each="lotto:${lastFive}">
+        <div class="row-set">
+            <div class="number-set" th:text="${lotto.screenNumber1}"></div>
+            <div class="number-set" th:text="${lotto.screenNumber2}"></div>
+            <div class="number-set" th:text="${lotto.screenNumber3}"></div>
+            <div class="number-set" th:text="${lotto.screenNumber4}"></div>
+            <div class="number-set" th:text="${lotto.screenNumber5}"></div>
+            <div class="number-set" th:text="${lotto.screenNumber6}"></div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
