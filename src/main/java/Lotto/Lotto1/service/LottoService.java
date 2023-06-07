@@ -38,84 +38,19 @@ public class LottoService {
         return lottoDomain;
     }
 
-    public Integer totalNumber() {
-        return lottoRepository.sumGet();
+    public List<LottoDomain> getAll() {
+        return lottoRepository.listAll();
     }
 
-    public void lottoStore1Save(LottoDomain lottoDomain) {
-        lottoRepository.store1Save(lottoDomain);
+    public List<LottoDomain> getFive() {
+        return lottoRepository.last5();
     }
 
-    public void lottoStore2Save() {
-        lottoRepository.store2Save();
-    }
-
-    public void lottoStore3Save() {
-        lottoRepository.store3Save();
-    }
-
-    public void lottoStore4Save() {
-        lottoRepository.store4Save();
-    }
-
-    public void lottoStore5Save() {
-        lottoRepository.store5Save();
-    }
-
-    public void lottoStore6Save() {
-        lottoRepository.store6Save();
-    }
-
-    public void lottoStore7Save() {
-        lottoRepository.store7Save();
-    }
-
-    public void lottoStore8Save() {
-        lottoRepository.store8Save();
-    }
-
-    public Map<String, Integer> lottoStore1Get() {
-        return lottoRepository.store1Get();
-    }
-
-    public Map<String, Integer> lottoStore2Get() {
-        return lottoRepository.store2Get();
-    }
-
-    public Map<String, Integer> lottoStore3Get() {
-        return lottoRepository.store3Get();
-    }
-
-    public Map<String, Integer> lottoStore4Get() {
-        return lottoRepository.store4Get();
-    }
-
-    public Map<String, Integer> lottoStore5Get() {
-        return lottoRepository.store5Get();
-    }
-
-    public Map<String, Integer> lottoStore6Get() {
-        return lottoRepository.store6Get();
-    }
-
-    public Map<String, Integer> lottoStore7Get() {
-        return lottoRepository.store7Get();
-    }
-
-    public Map<String, Integer> lottoStore8Get() {
-        return lottoRepository.store8Get();
-    }
-
-
-    public void lastNumbersSave(LottoDomain lottoDomain) {
-        lottoRepository.lastNumbersSave(lottoDomain);
-    }
-
-    public Map<String, Integer> lastNumbersGet() {
-        return lottoRepository.lastNumbersGet();
+    public void saveLotto(LottoDomain lottoDomain) {
+        lottoRepository.save(lottoDomain);
     }
 
     public void lottoStoreClear() {
-        lottoRepository.clearAllStore();
+        lottoRepository.clear();
     }
 }
