@@ -19,71 +19,32 @@ public class LottoRepository {
     private static Map<String, Integer> store8 = new HashMap<>();
 
     private Map<String, Integer> lastNumbers = new HashMap<>();
+    private Integer sum = 0;
 
     public LottoRepository() {
-        store1.put("1", 0);
-        store1.put("2", 0);
-        store1.put("3", 0);
-        store1.put("4", 0);
-        store1.put("5", 0);
-        store1.put("6", 0);
+        store1_init();
+        store2_init();
+        store3_init();
+        store4_init();
+        store5_init();
+        store6_init();
+        store7_init();
+        store8_init();
 
-        store2.put("1", 0);
-        store2.put("2", 0);
-        store2.put("3", 0);
-        store2.put("4", 0);
-        store2.put("5", 0);
-        store2.put("6", 0);
-
-        store3.put("1", 0);
-        store3.put("2", 0);
-        store3.put("3", 0);
-        store3.put("4", 0);
-        store3.put("5", 0);
-        store3.put("6", 0);
-
-        store4.put("1", 0);
-        store4.put("2", 0);
-        store4.put("3", 0);
-        store4.put("4", 0);
-        store4.put("5", 0);
-        store4.put("6", 0);
-
-        store5.put("1", 0);
-        store5.put("2", 0);
-        store5.put("3", 0);
-        store5.put("4", 0);
-        store5.put("5", 0);
-        store5.put("6", 0);
-
-        store6.put("1", 0);
-        store6.put("2", 0);
-        store6.put("3", 0);
-        store6.put("4", 0);
-        store6.put("5", 0);
-        store6.put("6", 0);
-
-        store7.put("1", 0);
-        store7.put("2", 0);
-        store7.put("3", 0);
-        store7.put("4", 0);
-        store7.put("5", 0);
-        store7.put("6", 0);
-
-        store8.put("1", 0);
-        store8.put("2", 0);
-        store8.put("3", 0);
-        store8.put("4", 0);
-        store8.put("5", 0);
-        store8.put("6", 0);
-
-        lastNumbers.put("1", 0);
-        lastNumbers.put("2", 0);
-        lastNumbers.put("3", 0);
-        lastNumbers.put("4", 0);
-        lastNumbers.put("5", 0);
-        lastNumbers.put("6", 0);
+        lastNumbers_init();
     }
+
+    /**
+     * ㅣ-----Get-----ㅣ
+     */
+    public Integer sumGet() {
+        return sum;
+    }
+
+    public Map<String, Integer> lastNumbersGet() {
+        return lastNumbers;
+    }
+
 
     public Map<String, Integer> store1Get() {
         return store1;
@@ -117,6 +78,10 @@ public class LottoRepository {
         return store8;
     }
 
+    /**
+     * ㅣ-----Save-----ㅣ
+     */
+
     public void store1Save(LottoDomain lottoDomain) {
         store1.replace("1", lottoDomain.getScreenNumber1());
         store1.replace("2", lottoDomain.getScreenNumber2());
@@ -124,6 +89,7 @@ public class LottoRepository {
         store1.replace("4", lottoDomain.getScreenNumber4());
         store1.replace("5", lottoDomain.getScreenNumber5());
         store1.replace("6", lottoDomain.getScreenNumber6());
+        sum += 6;
     }
 
     public void store2Save() {
@@ -189,10 +155,6 @@ public class LottoRepository {
         store8.replace("6", store7.get("6"));
     }
 
-    public Map<String, Integer> lastNumbersGet() {
-        return lastNumbers;
-    }
-
     public void lastNumbersSave(LottoDomain lottoDomain) {
         lastNumbers.put("1", lottoDomain.getScreenNumber1());
         lastNumbers.put("2", lottoDomain.getScreenNumber2());
@@ -203,60 +165,100 @@ public class LottoRepository {
     }
 
     public void clearAllStore() {
-        store1.put("1", 0);
-        store1.put("2", 0);
-        store1.put("3", 0);
-        store1.put("4", 0);
-        store1.put("5", 0);
-        store1.put("6", 0);
+        store1_init();
+        store2_init();
+        store3_init();
+        store4_init();
+        store5_init();
+        store6_init();
+        store7_init();
+        store8_init();
 
-        store2.put("1", 0);
-        store2.put("2", 0);
-        store2.put("3", 0);
-        store2.put("4", 0);
-        store2.put("5", 0);
-        store2.put("6", 0);
+        lastNumbers_init();
+        sum = 0;
+    }
 
-        store3.put("1", 0);
-        store3.put("2", 0);
-        store3.put("3", 0);
-        store3.put("4", 0);
-        store3.put("5", 0);
-        store3.put("6", 0);
+    /**
+     * 메서드 리펙토링
+     */
+    private void lastNumbers_init() {
+        lastNumbers.put("1", null);
+        lastNumbers.put("2", null);
+        lastNumbers.put("3", null);
+        lastNumbers.put("4", null);
+        lastNumbers.put("5", null);
+        lastNumbers.put("6", null);
+    }
 
-        store4.put("1", 0);
-        store4.put("2", 0);
-        store4.put("3", 0);
-        store4.put("4", 0);
-        store4.put("5", 0);
-        store4.put("6", 0);
+    private static void store8_init() {
+        store8.put("1", null);
+        store8.put("2", null);
+        store8.put("3", null);
+        store8.put("4", null);
+        store8.put("5", null);
+        store8.put("6", null);
+    }
 
-        store5.put("1", 0);
-        store5.put("2", 0);
-        store5.put("3", 0);
-        store5.put("4", 0);
-        store5.put("5", 0);
-        store5.put("6", 0);
+    private static void store7_init() {
+        store7.put("1", null);
+        store7.put("2", null);
+        store7.put("3", null);
+        store7.put("4", null);
+        store7.put("5", null);
+        store7.put("6", null);
+    }
 
-        store6.put("1", 0);
-        store6.put("2", 0);
-        store6.put("3", 0);
-        store6.put("4", 0);
-        store6.put("5", 0);
-        store6.put("6", 0);
+    private static void store6_init() {
+        store6.put("1", null);
+        store6.put("2", null);
+        store6.put("3", null);
+        store6.put("4", null);
+        store6.put("5", null);
+        store6.put("6", null);
+    }
 
-        store7.put("1", 0);
-        store7.put("2", 0);
-        store7.put("3", 0);
-        store7.put("4", 0);
-        store7.put("5", 0);
-        store7.put("6", 0);
+    private static void store5_init() {
+        store5.put("1", null);
+        store5.put("2", null);
+        store5.put("3", null);
+        store5.put("4", null);
+        store5.put("5", null);
+        store5.put("6", null);
+    }
 
-        store8.put("1", 0);
-        store8.put("2", 0);
-        store8.put("3", 0);
-        store8.put("4", 0);
-        store8.put("5", 0);
-        store8.put("6", 0);
+    private static void store4_init() {
+        store4.put("1", null);
+        store4.put("2", null);
+        store4.put("3", null);
+        store4.put("4", null);
+        store4.put("5", null);
+        store4.put("6", null);
+    }
+
+    private static void store3_init() {
+        store3.put("1", null);
+        store3.put("2", null);
+        store3.put("3", null);
+        store3.put("4", null);
+        store3.put("5", null);
+        store3.put("6", null);
+    }
+
+    private static void store2_init() {
+        store2.put("1", null);
+        store2.put("2", null);
+        store2.put("3", null);
+        store2.put("4", null);
+        store2.put("5", null);
+        store2.put("6", null);
+    }
+
+    private static void store1_init() {
+        store1.put("1", null);
+        store1.put("2", null);
+        store1.put("3", null);
+        store1.put("4", null);
+        store1.put("5", null);
+        store1.put("6", null);
     }
 }
