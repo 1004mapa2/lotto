@@ -1,5 +1,6 @@
 package Lotto.Lotto1.service;
 
+import Lotto.Lotto1.domain.InputNumber;
 import Lotto.Lotto1.domain.LottoDomain;
 import Lotto.Lotto1.repository.LottoRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,10 +14,19 @@ public class LottoService {
 
     private final LottoRepository lottoRepository;
 
-    public LottoDomain LottoNumberCreate() {
+    public LottoDomain lottoNumberCreate(InputNumber inputNumber) {
         LottoDomain lottoDomain = new LottoDomain();
 
-        List<Integer> list = getRandomNumbers();
+        Set<Integer> numbers = new HashSet<>();
+        numbers.add(inputNumber.getNumber1());
+        numbers.add(inputNumber.getNumber2());
+        numbers.add(inputNumber.getNumber3());
+        while(numbers.size() < 6) {
+            int randomNumber = (int) (Math.random() * 45 + 1);
+            numbers.add(randomNumber);
+        }
+        List<Integer> list = new ArrayList<>(numbers);
+        Collections.sort(list);
 
         lottoDomain.setScreenNumber1(list.get(0));
         lottoDomain.setScreenNumber2(list.get(1));
@@ -28,35 +38,39 @@ public class LottoService {
         return lottoDomain;
     }
 
-    public void LottoStore1Save(LottoDomain lottoDomain) {
+    public Integer totalNumber() {
+        return lottoRepository.sumGet();
+    }
+
+    public void lottoStore1Save(LottoDomain lottoDomain) {
         lottoRepository.store1Save(lottoDomain);
     }
 
-    public void LottoStore2Save() {
+    public void lottoStore2Save() {
         lottoRepository.store2Save();
     }
 
-    public void LottoStore3Save() {
+    public void lottoStore3Save() {
         lottoRepository.store3Save();
     }
 
-    public void LottoStore4Save() {
+    public void lottoStore4Save() {
         lottoRepository.store4Save();
     }
 
-    public void LottoStore5Save() {
+    public void lottoStore5Save() {
         lottoRepository.store5Save();
     }
 
-    public void LottoStore6Save() {
+    public void lottoStore6Save() {
         lottoRepository.store6Save();
     }
 
-    public void LottoStore7Save() {
+    public void lottoStore7Save() {
         lottoRepository.store7Save();
     }
 
-    public void LottoStore8Save() {
+    public void lottoStore8Save() {
         lottoRepository.store8Save();
     }
 
@@ -103,17 +117,5 @@ public class LottoService {
 
     public void lottoStoreClear() {
         lottoRepository.clearAllStore();
-    }
-
-    /* 중복 없는 랜덤 숫자 뽑기 */
-    private static List<Integer> getRandomNumbers() {
-        Set<Integer> numbers = new HashSet<>();
-        while(numbers.size() < 6) {
-            int randomNumber = (int) (Math.random() * 45 + 1);
-            numbers.add(randomNumber);
-        }
-        List<Integer> list = new ArrayList<>(numbers);
-        Collections.sort(list);
-        return list;
     }
 }
