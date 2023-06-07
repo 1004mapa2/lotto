@@ -6,76 +6,69 @@
     <link rel="stylesheet" href="/home.css">
 </head>
 <body>
-<h1 class = "mainHeader">로또 번호 생성기</h1>
-<div class = "number-head-div">
-    <div class = "input-number-div" th:text="${lastNumbersList['1']}">
-        <div>0</div>
-    </div>
-    <div class = "input-number-div" th:text="${lastNumbersList['2']}">
-        <div>0</div>
-    </div>
-    <div class = "input-number-div" th:text="${lastNumbersList['3']}">
-        <div>0</div>
-    </div>
-    <div class = "random-number-div" th:text="${lastNumbersList['4']}">
-        <div>0</div>
-    </div>
-    <div class = "random-number-div" th:text="${lastNumbersList['5']}">
-        <div>0</div>
-    </div>
-    <div class = "random-number-div" th:text="${lastNumbersList['6']}">
-        <div>0</div>
-    </div>
+<h1 class="mainHeader">로또 번호 생성기</h1>
+<div>
+    <form action="/pull" th:object="${number123}" method="post">
+        <div class="number-head-div">
+            <input type="text" th:field="*{number1}" class="input-number-div">
+            <input type="text" th:field="*{number2}" class="input-number-div">
+            <input type="text" th:field="*{number3}" class="input-number-div">
+            <input class="random-number-div">
+            <input class="random-number-div">
+            <input class="random-number-div">
+        </div>
+
+        <div class="error">오류 메세지가 있을경우 여기에 표시</div>
+
+        <div class="button-set">
+            <button class="button-solo" type="submit">뽑기</button>
+            <button class="button-solo" type="button" th:onclick="|location.href='@{/list}'|">리스트</button>
+        </div>
+    </form>
 </div>
 
-<div class = "error">오류 메세지가 있을경우 여기에 표시</div>
 
-<div class = "button-set">
-    <button class = "button-solo" type="button" th:onclick="|location.href='@{/pull}'|">뽑기</button>
-    <button class = "button-solo" type="button" th:onclick="|location.href='@{/list}'|">리스트</button>
-</div>
+<div class="pull-number-text">최근 생성번호 5개</div>
 
-<div class = "pull-number-text">최근 생성번호 5개</div>
-
-<div class = "row-set">
-    <div class = "number-set" th:text="${getStore1['1']}">0</div>
-    <div class = "number-set" th:text="${getStore1['2']}">0</div>
-    <div class = "number-set" th:text="${getStore1['3']}">0</div>
-    <div class = "number-set" th:text="${getStore1['4']}">0</div>
-    <div class = "number-set" th:text="${getStore1['5']}">0</div>
-    <div class = "number-set" th:text="${getStore1['6']}">0</div>
+<div class="row-set">
+    <div class="number-set" th:text="${getStore1['1']}"></div>
+    <div class="number-set" th:text="${getStore1['2']}"></div>
+    <div class="number-set" th:text="${getStore1['3']}"></div>
+    <div class="number-set" th:text="${getStore1['4']}"></div>
+    <div class="number-set" th:text="${getStore1['5']}"></div>
+    <div class="number-set" th:text="${getStore1['6']}"></div>
 </div>
-<div class = "row-set">
-    <div class = "number-set" th:text="${getStore2['1']}"></div>
-    <div class = "number-set" th:text="${getStore2['2']}"></div>
-    <div class = "number-set" th:text="${getStore2['3']}"></div>
-    <div class = "number-set" th:text="${getStore2['4']}"></div>
-    <div class = "number-set" th:text="${getStore2['5']}"></div>
-    <div class = "number-set" th:text="${getStore2['6']}"></div>
+<div class="row-set">
+    <div class="number-set" th:text="${getStore2['1']}"></div>
+    <div class="number-set" th:text="${getStore2['2']}"></div>
+    <div class="number-set" th:text="${getStore2['3']}"></div>
+    <div class="number-set" th:text="${getStore2['4']}"></div>
+    <div class="number-set" th:text="${getStore2['5']}"></div>
+    <div class="number-set" th:text="${getStore2['6']}"></div>
 </div>
-<div class = "row-set">
-    <div class = "number-set" th:text="${getStore3['1']}"></div>
-    <div class = "number-set" th:text="${getStore3['2']}"></div>
-    <div class = "number-set" th:text="${getStore3['3']}"></div>
-    <div class = "number-set" th:text="${getStore3['4']}"></div>
-    <div class = "number-set" th:text="${getStore3['5']}"></div>
-    <div class = "number-set" th:text="${getStore3['6']}"></div>
+<div class="row-set">
+    <div class="number-set" th:text="${getStore3['1']}"></div>
+    <div class="number-set" th:text="${getStore3['2']}"></div>
+    <div class="number-set" th:text="${getStore3['3']}"></div>
+    <div class="number-set" th:text="${getStore3['4']}"></div>
+    <div class="number-set" th:text="${getStore3['5']}"></div>
+    <div class="number-set" th:text="${getStore3['6']}"></div>
 </div>
-<div class = "row-set">
-    <div class = "number-set" th:text="${getStore4['1']}"></div>
-    <div class = "number-set" th:text="${getStore4['2']}"></div>
-    <div class = "number-set" th:text="${getStore4['3']}"></div>
-    <div class = "number-set" th:text="${getStore4['4']}"></div>
-    <div class = "number-set" th:text="${getStore4['5']}"></div>
-    <div class = "number-set" th:text="${getStore4['6']}"></div>
+<div class="row-set">
+    <div class="number-set" th:text="${getStore4['1']}"></div>
+    <div class="number-set" th:text="${getStore4['2']}"></div>
+    <div class="number-set" th:text="${getStore4['3']}"></div>
+    <div class="number-set" th:text="${getStore4['4']}"></div>
+    <div class="number-set" th:text="${getStore4['5']}"></div>
+    <div class="number-set" th:text="${getStore4['6']}"></div>
 </div>
-<div class = "row-set">
-    <div class = "number-set" th:text="${getStore5['1']}"></div>
-    <div class = "number-set" th:text="${getStore5['2']}"></div>
-    <div class = "number-set" th:text="${getStore5['3']}"></div>
-    <div class = "number-set" th:text="${getStore5['4']}"></div>
-    <div class = "number-set" th:text="${getStore5['5']}"></div>
-    <div class = "number-set" th:text="${getStore5['6']}"></div>
+<div class="row-set">
+    <div class="number-set" th:text="${getStore5['1']}"></div>
+    <div class="number-set" th:text="${getStore5['2']}"></div>
+    <div class="number-set" th:text="${getStore5['3']}"></div>
+    <div class="number-set" th:text="${getStore5['4']}"></div>
+    <div class="number-set" th:text="${getStore5['5']}"></div>
+    <div class="number-set" th:text="${getStore5['6']}"></div>
 </div>
 </body>
 </html>
