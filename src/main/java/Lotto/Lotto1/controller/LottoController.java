@@ -1,11 +1,13 @@
 package Lotto.Lotto1.controller;
 
+import Lotto.Lotto1.domain.InputNumber;
 import Lotto.Lotto1.domain.LottoDomain;
 import Lotto.Lotto1.service.LottoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Map;
 
@@ -17,6 +19,7 @@ public class LottoController {
 
     @GetMapping("/")
     public String stay(Model model) {
+        model.addAttribute("number123", new InputNumber());
         Map<String, Integer> lastNumbersList = lottoService.lastNumbersGet();
         model.addAttribute("lastNumbersList", lastNumbersList);
         Map<String, Integer> getStore1 = lottoService.lottoStore1Get();
@@ -33,17 +36,17 @@ public class LottoController {
         return "/index";
     }
 
-    @GetMapping("/pull")
-    public String pull() {
-        LottoDomain lottoDomain = lottoService.LottoNumberCreate();
-        lottoService.LottoStore8Save();
-        lottoService.LottoStore7Save();
-        lottoService.LottoStore6Save();
-        lottoService.LottoStore5Save();
-        lottoService.LottoStore4Save();
-        lottoService.LottoStore3Save();
-        lottoService.LottoStore2Save();
-        lottoService.LottoStore1Save(lottoDomain);
+    @PostMapping("/pull")
+    public String Pull(InputNumber inputNumber) {
+        LottoDomain lottoDomain = lottoService.lottoNumberCreate(inputNumber);
+        lottoService.lottoStore8Save();
+        lottoService.lottoStore7Save();
+        lottoService.lottoStore6Save();
+        lottoService.lottoStore5Save();
+        lottoService.lottoStore4Save();
+        lottoService.lottoStore3Save();
+        lottoService.lottoStore2Save();
+        lottoService.lottoStore1Save(lottoDomain);
         lottoService.lastNumbersSave(lottoDomain);
         return "redirect:/";
     }
@@ -56,6 +59,7 @@ public class LottoController {
 
     @GetMapping("/list")
     public String list(Model model) {
+        Integer getTotal = lottoService.totalNumber();
         Map<String, Integer> getStore1 = lottoService.lottoStore1Get();
         Map<String, Integer> getStore2 = lottoService.lottoStore2Get();
         Map<String, Integer> getStore3 = lottoService.lottoStore3Get();
@@ -64,6 +68,7 @@ public class LottoController {
         Map<String, Integer> getStore6 = lottoService.lottoStore6Get();
         Map<String, Integer> getStore7 = lottoService.lottoStore7Get();
         Map<String, Integer> getStore8 = lottoService.lottoStore8Get();
+        model.addAttribute("getTotal", getTotal);
         model.addAttribute("getStore1", getStore1);
         model.addAttribute("getStore2", getStore2);
         model.addAttribute("getStore3", getStore3);
