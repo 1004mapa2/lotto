@@ -17,7 +17,6 @@ public class LottoService {
     public LottoDomain lottoNumberCreate(InputNumber inputNumber) {
         LottoDomain lottoDomain = new LottoDomain();
 
-
         Set<Integer> numbers = new HashSet<>();
         numbers.add(inputNumber.getNumber1());
         numbers.add(inputNumber.getNumber2());
