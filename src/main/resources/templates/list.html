@@ -15,73 +15,19 @@
 
 <div class="total">
     <div>현재 생성된 총 갯수는 (</div>
-    <div th:text="${getTotal}">0</div>
+    <div th:text="${allStore.size()}">0</div>
     <div>) 개 입니다.</div>
 </div>
 
-<div class="row-set">
-    <div class="number-set" th:text="${getStore1['1']}"></div>
-    <div class="number-set" th:text="${getStore1['2']}"></div>
-    <div class="number-set" th:text="${getStore1['3']}"></div>
-    <div class="number-set" th:text="${getStore1['4']}"></div>
-    <div class="number-set" th:text="${getStore1['5']}"></div>
-    <div class="number-set" th:text="${getStore1['6']}"></div>
-</div>
-<div class="row-set">
-    <div class="number-set" th:text="${getStore2['1']}"></div>
-    <div class="number-set" th:text="${getStore2['2']}"></div>
-    <div class="number-set" th:text="${getStore2['3']}"></div>
-    <div class="number-set" th:text="${getStore2['4']}"></div>
-    <div class="number-set" th:text="${getStore2['5']}"></div>
-    <div class="number-set" th:text="${getStore2['6']}"></div>
-</div>
-<div class="row-set">
-    <div class="number-set" th:text="${getStore3['1']}"></div>
-    <div class="number-set" th:text="${getStore3['2']}"></div>
-    <div class="number-set" th:text="${getStore3['3']}"></div>
-    <div class="number-set" th:text="${getStore3['4']}"></div>
-    <div class="number-set" th:text="${getStore3['5']}"></div>
-    <div class="number-set" th:text="${getStore3['6']}"></div>
-</div>
-<div class="row-set">
-    <div class="number-set" th:text="${getStore4['1']}"></div>
-    <div class="number-set" th:text="${getStore4['2']}"></div>
-    <div class="number-set" th:text="${getStore4['3']}"></div>
-    <div class="number-set" th:text="${getStore4['4']}"></div>
-    <div class="number-set" th:text="${getStore4['5']}"></div>
-    <div class="number-set" th:text="${getStore4['6']}"></div>
-</div>
-<div class="row-set">
-    <div class="number-set" th:text="${getStore5['1']}"></div>
-    <div class="number-set" th:text="${getStore5['2']}"></div>
-    <div class="number-set" th:text="${getStore5['3']}"></div>
-    <div class="number-set" th:text="${getStore5['4']}"></div>
-    <div class="number-set" th:text="${getStore5['5']}"></div>
-    <div class="number-set" th:text="${getStore5['6']}"></div>
-</div>
-<div class="row-set">
-    <div class="number-set" th:text="${getStore6['1']}"></div>
-    <div class="number-set" th:text="${getStore6['2']}"></div>
-    <div class="number-set" th:text="${getStore6['3']}"></div>
-    <div class="number-set" th:text="${getStore6['4']}"></div>
-    <div class="number-set" th:text="${getStore6['5']}"></div>
-    <div class="number-set" th:text="${getStore6['6']}"></div>
-</div>
-<div class="row-set">
-    <div class="number-set" th:text="${getStore7['1']}"></div>
-    <div class="number-set" th:text="${getStore7['2']}"></div>
-    <div class="number-set" th:text="${getStore7['3']}"></div>
-    <div class="number-set" th:text="${getStore7['4']}"></div>
-    <div class="number-set" th:text="${getStore7['5']}"></div>
-    <div class="number-set" th:text="${getStore7['6']}"></div>
-</div>
-<div class="row-set">
-    <div class="number-set" th:text="${getStore8['1']}"></div>
-    <div class="number-set" th:text="${getStore8['2']}"></div>
-    <div class="number-set" th:text="${getStore8['3']}"></div>
-    <div class="number-set" th:text="${getStore8['4']}"></div>
-    <div class="number-set" th:text="${getStore8['5']}"></div>
-    <div class="number-set" th:text="${getStore8['6']}"></div>
+<div th:each="lotto:${allStore}">
+    <div class="row-set">
+        <div class="number-set" th:text="${lotto.screenNumber1}"></div>
+        <div class="number-set" th:text="${lotto.screenNumber2}"></div>
+        <div class="number-set" th:text="${lotto.screenNumber3}"></div>
+        <div class="number-set" th:text="${lotto.screenNumber4}"></div>
+        <div class="number-set" th:text="${lotto.screenNumber5}"></div>
+        <div class="number-set" th:text="${lotto.screenNumber6}"></div>
+    </div>
 </div>
 </body>
 </html>
