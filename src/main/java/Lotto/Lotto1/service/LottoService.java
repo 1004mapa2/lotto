@@ -30,7 +30,6 @@ public class LottoService {
 
     public void LottoStore1Save(LottoDomain lottoDomain) {
         lottoRepository.store1Save(lottoDomain);
-
     }
 
     public void LottoStore2Save() {
