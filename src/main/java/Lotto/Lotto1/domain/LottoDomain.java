@@ -7,7 +7,6 @@ import lombok.Setter;
 @Setter
 public class LottoDomain {
 
-//    private static int[] screen = new int[6];
     private Integer screenNumber1;
     private Integer screenNumber2;
     private Integer screenNumber3;
