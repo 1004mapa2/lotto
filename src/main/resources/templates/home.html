@@ -4,13 +4,22 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" href="/home.css">
+    <style>
+        .field-error {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+    </style>
 </head>
 <body>
 <h1 class="mainHeader">로또 번호 생성기</h1>
 <div>
-    <form action="/pull" th:object="${inputNumber}" method="post">
+    <form action="/pull" th:object="${inputNumberDto}" method="post">
         <div class="number-head-div">
-            <input type="text" th:field="*{number1}" class="input-number-div">
+            <input type="text" th:field="*{number1}" th:errorclass="field-error" class="input-number-div">
+            <div class="field-error" th:errors="*{number1}">
+                오류
+            </div>
             <input type="text" th:field="*{number2}" class="input-number-div">
             <input type="text" th:field="*{number3}" class="input-number-div">
             <input class="random-number-div" readonly/>
