@@ -1,17 +1,21 @@
 package Lotto.Lotto1.controller;
 
-import Lotto.Lotto1.domain.InputNumber;
+import Lotto.Lotto1.domain.InputNumberDto;
 import Lotto.Lotto1.domain.LottoDomain;
 import Lotto.Lotto1.service.LottoService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 public class LottoController {
@@ -19,16 +23,20 @@ public class LottoController {
     private final LottoService lottoService;
 
     @GetMapping("/")
-    public String stay(@ModelAttribute("inputNumber") InputNumber inputNumber, Model model) {
+    public String stay(@ModelAttribute("inputNumberDto") InputNumberDto inputNumberDto, Model model) {
         List<LottoDomain> lastFive = lottoService.getFive();
         model.addAttribute("lastFive", lastFive);
 
-        return "/index";
+        return "home";
     }
 
     @PostMapping("/pull")
-    public String Pull(InputNumber inputNumber) {
-        LottoDomain lottoDomain = lottoService.lottoNumberCreate(inputNumber);
+    public String Pull(@Validated @ModelAttribute("inputNumberDto") InputNumberDto inputNumberDto, BindingResult bindingResult) {
+
+        if(bindingResult.hasErrors()) {
+            return "/";
+        }
+        LottoDomain lottoDomain = lottoService.lottoNumberCreate(inputNumberDto);
         lottoService.saveLotto(lottoDomain);
 
         return "redirect:/";
