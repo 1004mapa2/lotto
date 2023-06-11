@@ -4,31 +4,33 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" href="/home.css">
-    <style>
-        .field-error {
-            border-color: #dc3545;
-            color: #dc3545;
-        }
-    </style>
 </head>
+<style>
+    .field-error {
+        border-color: red;
+        color: red;
+    }
+</style>
 <body>
 <h1 class="mainHeader">로또 번호 생성기</h1>
 <div>
     <form action="/pull" th:object="${inputNumberDto}" method="post">
         <div class="number-head-div">
             <input type="text" th:field="*{number1}" th:errorclass="field-error" class="input-number-div">
-            <div class="field-error" th:errors="*{number1}">
-                오류
-            </div>
-            <input type="text" th:field="*{number2}" class="input-number-div">
-            <input type="text" th:field="*{number3}" class="input-number-div">
+            <input type="text" th:field="*{number2}" th:errorclass="field-error" class="input-number-div">
+            <input type="text" th:field="*{number3}" th:errorclass="field-error" class="input-number-div">
             <input class="random-number-div" readonly/>
             <input class="random-number-div" readonly/>
             <input class="random-number-div" readonly/>
         </div>
 
-        <div class="error">오류 메세지가 있을경우 여기에 표시</div>
-
+        <div class="error" th:if="${#fields.errors()}">
+            <div class="field-error">
+                <div th:errors="*{number1}">1오류</div>
+                <div th:errors="*{number2}">2오류</div>
+                <div th:errors="*{number3}">3오류</div>
+            </div>
+        </div>
         <div class="button-set">
             <button class="button-solo" type="submit">뽑기</button>
             <button class="button-solo" type="button" th:onclick="|location.href='@{/list}'|">리스트</button>
