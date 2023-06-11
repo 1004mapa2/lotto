@@ -31,10 +31,13 @@ public class LottoController {
     }
 
     @PostMapping("/pull")
-    public String Pull(@Validated @ModelAttribute("inputNumberDto") InputNumberDto inputNumberDto, BindingResult bindingResult) {
+    public String Pull(@Validated @ModelAttribute("inputNumberDto") InputNumberDto inputNumberDto, BindingResult bindingResult, Model model) {
 
         if(bindingResult.hasErrors()) {
-            return "/";
+//            log.info("errors={}", bindingResult);
+            List<LottoDomain> lastFive = lottoService.getFive();
+            model.addAttribute("lastFive", lastFive);
+            return "home";
         }
         LottoDomain lottoDomain = lottoService.lottoNumberCreate(inputNumberDto);
         lottoService.saveLotto(lottoDomain);
