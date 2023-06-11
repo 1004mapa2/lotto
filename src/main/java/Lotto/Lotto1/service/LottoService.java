@@ -1,6 +1,6 @@
 package Lotto.Lotto1.service;
 
-import Lotto.Lotto1.domain.InputNumber;
+import Lotto.Lotto1.domain.InputNumberDto;
 import Lotto.Lotto1.domain.LottoDomain;
 import Lotto.Lotto1.repository.LottoRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,13 +14,14 @@ public class LottoService {
 
     private final LottoRepository lottoRepository;
 
-    public LottoDomain lottoNumberCreate(InputNumber inputNumber) {
+    public LottoDomain lottoNumberCreate(InputNumberDto inputNumberDto) {
         LottoDomain lottoDomain = new LottoDomain();
 
+
         Set<Integer> numbers = new HashSet<>();
-        numbers.add(inputNumber.getNumber1());
-        numbers.add(inputNumber.getNumber2());
-        numbers.add(inputNumber.getNumber3());
+        numbers.add(inputNumberDto.getNumber1());
+        numbers.add(inputNumberDto.getNumber2());
+        numbers.add(inputNumberDto.getNumber3());
         while(numbers.size() < 6) {
             int randomNumber = (int) (Math.random() * 45 + 1);
             numbers.add(randomNumber);
