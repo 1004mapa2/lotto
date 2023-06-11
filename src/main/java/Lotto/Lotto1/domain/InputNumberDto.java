@@ -13,15 +13,15 @@ import javax.validation.constraints.NotNull;
 @Setter
 public class InputNumberDto {
 
-    @NotNull(message = "널 값은 안됨")
-    @Range(min = 1, max = 45, message = "1부터 45까지만 허용")
+    @NotNull
+    @Range(min = 1, max = 45)
     private Integer number1;
 
-    @NotNull(message = "널 값은 안됨")
-    @Range(min = 1, max = 45, message = "1부터 45까지만 허용")
+    @NotNull
+    @Range(min = 1, max = 45)
     private Integer number2;
 
-    @NotNull(message = "널 값은 안됨")
-    @Range(min = 1, max = 45, message = "1부터 45까지만 허용")
+    @NotNull
+    @Range(min = 1, max = 45)
     private Integer number3;
 }
