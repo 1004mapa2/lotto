@@ -24,6 +24,9 @@
             <input class="random-number-div" readonly/>
         </div>
 
+        <div class="error" th:if="${#fields.hasGlobalErrors()}">
+            <div class="field-error" th:each="err : ${#fields.globalErrors()}" th:text="${err}">글로벌 오류</div>
+        </div>
         <div class="error" th:if="${#fields.errors()}">
             <div class="field-error">
                 <div th:errors="*{number1}">1오류</div>
