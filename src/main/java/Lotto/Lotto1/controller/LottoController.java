@@ -33,7 +33,14 @@ public class LottoController {
     @PostMapping("/pull")
     public String Pull(@Validated @ModelAttribute("inputNumberDto") InputNumberDto inputNumberDto, BindingResult bindingResult, Model model) {
 
-        if(bindingResult.hasErrors()) {
+        if (inputNumberDto.getNumber1() == inputNumberDto.getNumber2()
+                || inputNumberDto.getNumber1() == inputNumberDto.getNumber3()
+                || inputNumberDto.getNumber2() == inputNumberDto.getNumber3()) {
+            bindingResult.reject("duplicationNumber");
+        }
+
+
+        if (bindingResult.hasErrors()) {
 //            log.info("errors={}", bindingResult);
             List<LottoDomain> lastFive = lottoService.getFive();
             model.addAttribute("lastFive", lastFive);
