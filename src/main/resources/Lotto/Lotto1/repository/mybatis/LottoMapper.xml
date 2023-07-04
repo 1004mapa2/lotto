@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Lotto.Lotto1.repository.mybatis.LottoMapper">
+
+    <insert id="save">
+        insert into LottoDomain (screenNumber1, screenNumber2, screenNumber3, screenNumber4, screenNumber5, screenNumber6)
+        values (#{screenNumber1}, #{screenNumber2}, #{screenNumber3}, #{screenNumber4}, #{screenNumber5}, #{screenNumber6})
+    </insert>
+
+</mapper>
